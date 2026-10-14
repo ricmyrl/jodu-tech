@@ -28,7 +28,7 @@ export default function ElectricProjectsSection({ isMobile, onSelectProject }) {
     <View nativeID="projects" style={tw`mx-auto w-full max-w-[1120px] px-4 py-12`}>
       {/* SECTION HEADER */}
       <Reveal>
-        <View style={tw`mb-10 items-center text-center`}>
+        <View nativeID="projects-section-heading" style={tw`mb-10 items-center text-center`}>
           <Text nativeID="projects-eyebrow" style={tw`text-[11px] font-bold tracking-[0.2em] text-[#FACC15] uppercase mb-2`}>
             OUR PROJECTS
           </Text>
@@ -42,7 +42,7 @@ export default function ElectricProjectsSection({ isMobile, onSelectProject }) {
       </Reveal>
 
       {/* ELECTRIC CIRCUIT BOUNDARY CONTAINER */}
-      <View style={tw`relative w-full p-4 sm:p-8 overflow-hidden`}>
+      <View nativeID="projects-grid-container" style={tw`relative w-full p-4 sm:p-8 overflow-hidden`}>
         
         {/* STATIC BORDER (TOP, BOTTOM, LEFT ONLY - NO RADIUS) */}
         <View style={tw`absolute inset-0 border-[1px] border-[#FACC15] pointer-events-none border-r-0`} />
@@ -80,7 +80,7 @@ export default function ElectricProjectsSection({ isMobile, onSelectProject }) {
                   onPress={() => onSelectProject(project.slug)}
                   style={tw`group w-full`}
                 >
-                  <View style={tw`relative h-44 sm:h-48 w-full overflow-hidden bg-transparent border-0`}>
+                  <View nativeID={`project-image-frame-${project.id}`} style={tw`relative h-44 sm:h-48 w-full overflow-hidden bg-transparent border-0`}>
                     <Image
                       nativeID={`solar-photo-${project.id}`}
                       source={{ uri: project.image }}
@@ -123,7 +123,7 @@ export default function ElectricProjectsSection({ isMobile, onSelectProject }) {
         </View>
 
         {/* BUTTON CONTROLS */}
-        <View style={tw`mt-10 flex-row flex-wrap items-center justify-center gap-4`}>
+        <View nativeID="projects-controls" style={tw`mt-10 flex-row flex-wrap items-center justify-center gap-4`}>
           {!isMaxReached ? (
             <MotionDiv whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Pressable

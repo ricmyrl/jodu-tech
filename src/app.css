@@ -813,6 +813,47 @@ body {
 }
 
 @media (max-width: 760px) {
+  #about {
+    gap: 24px !important;
+    padding-top: 30px !important;
+    padding-bottom: 36px !important;
+  }
+
+  #about-team-visual {
+    flex: none !important;
+    width: 100% !important;
+    min-height: 250px !important;
+    height: 250px !important;
+  }
+
+  #services {
+    padding-top: 26px !important;
+    padding-bottom: 38px !important;
+  }
+
+  #services > div:first-child > div {
+    gap: 12px !important;
+  }
+
+  #services-grid {
+    gap: 10px !important;
+    margin-top: 18px !important;
+  }
+
+  #services-grid [id^="solution-"] {
+    min-height: 170px !important;
+    padding: 16px !important;
+  }
+
+  #packages {
+    padding-top: 30px !important;
+    padding-bottom: 36px !important;
+  }
+
+  #packages-heading {
+    margin-bottom: 22px;
+  }
+
   #project-detail {
     padding-top: 12px;
   }
@@ -824,7 +865,7 @@ body {
 
   #packages-grid [id^="package-card-"] {
     min-height: auto;
-    padding: 18px;
+    padding: 14px;
   }
 
   #packages-grid [id^="package-number-"],
@@ -834,14 +875,22 @@ body {
   }
 
   #project-detail-hero {
-    min-height: 340px;
-    padding: 24px;
+    min-height: 290px;
+    padding: 20px;
   }
 
   #project-detail-body {
     grid-template-columns: minmax(0, 1fr);
-    gap: 26px;
-    padding: 32px 0;
+    gap: 20px;
+    padding: 24px 0;
+  }
+
+  #project-detail-gallery {
+    padding-top: 26px;
+  }
+
+  #project-detail-more {
+    padding-top: 28px;
   }
 
   #project-detail-media-scroll {
@@ -864,6 +913,48 @@ body {
 
   #services-grid {
     grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  #projects {
+    padding-top: 30px !important;
+    padding-bottom: 38px !important;
+  }
+
+  #projects-section-heading {
+    margin-bottom: 24px !important;
+  }
+
+  #projects-grid-container {
+    padding: 12px !important;
+  }
+
+  #projects [id^="project-image-frame-"] {
+    height: 150px !important;
+  }
+
+  #projects-controls {
+    gap: 12px !important;
+    margin-top: 24px !important;
+  }
+
+  #contact {
+    gap: 24px !important;
+    padding-top: 36px !important;
+    padding-bottom: 40px !important;
+  }
+
+  #contact-card {
+    padding: 18px !important;
+  }
+
+  #footer {
+    padding-top: 26px !important;
+    padding-bottom: 18px !important;
+  }
+
+  #footer > div:first-child {
+    gap: 22px !important;
+    padding-bottom: 24px !important;
   }
 
   #hero-sun-orb {

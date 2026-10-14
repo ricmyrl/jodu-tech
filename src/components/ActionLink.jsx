@@ -5,9 +5,13 @@ import { YELLOW } from "../constants.js";
 
 const MotionDiv = m.div;
 
-function ActionLink({ children, onPress, primary = false, style, nativeID }) {
+function ActionLink({ children, onPress, primary = false, style, nativeID, fullWidth = false }) {
   return (
-    <MotionDiv whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
+    <MotionDiv
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      style={fullWidth ? { width: "100%" } : undefined}
+    >
       <Pressable
         accessibilityRole="link"
         nativeID={nativeID}

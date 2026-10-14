@@ -20,7 +20,7 @@ export default function HeroSection({ isMobile, width, height, headlineFontSize,
                     alignSelf: "center",
                     width: "100%",
                     maxWidth: 1120,
-                    minHeight: Math.max(height - (isMobile ? 80 : 104), 0),
+                    minHeight: isMobile ? 0 : Math.max(height - 104, 0),
                     justifyContent: isMobile ? "flex-start" : "center",
                     paddingTop: isMobile ? 55 : 66,
                     paddingBottom: isMobile ? 36 : 50,
@@ -63,12 +63,16 @@ export default function HeroSection({ isMobile, width, height, headlineFontSize,
                       },
                     ]}
                   >
-                    <ActionLink primary onPress={() => navigate("contact")} style={width <= 420 ? { width: "100%" } : null}>
+                    <ActionLink
+                      primary
+                      fullWidth={isMobile && width <= 420}
+                      onPress={() => navigate("contact")}
+                    >
                       Get Free Consultation  →
                     </ActionLink>
                     <ActionLink
+                      fullWidth={isMobile && width <= 420}
                       onPress={() => navigate("packages")}
-                      style={width <= 420 ? { width: "100%" } : null}
                     >
                       View Solar Packages
                     </ActionLink>
