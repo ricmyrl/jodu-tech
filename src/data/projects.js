@@ -9,8 +9,6 @@ export const PROJECTS = [
     location: "Hadejija, Nigeria",
     overview:
       "Explore photos documenting the solar installation project in Hadejija, from the site and equipment through the completed work.",
-    testimonial:
-      "The team kept us informed throughout the Hadejija installation and made the whole process feel straightforward.",
     highlights: [
       "Project photos from the Hadejija installation",
       "Solar equipment and site details",
@@ -42,8 +40,6 @@ export const PROJECTS = [
     location: "Lagos, Nigeria",
     overview:
       "Explore photos documenting the solar installation project in Lagos, from the site and equipment through the completed work.",
-    testimonial:
-      "We appreciated how the Lagos team took time to understand our needs and explain the installation plan clearly.",
     highlights: [
       "Project photos from the Lagos installation",
       "Solar equipment and site details",
@@ -70,8 +66,6 @@ export const PROJECTS = [
     location: "Lokogoma, Nigeria",
     overview:
       "Explore photos documenting the solar installation project in Lokogoma, from the site and equipment through the completed work.",
-    testimonial:
-      "The Lokogoma project came together smoothly, and communication with the team was clear from start to finish.",
     highlights: [
       "Project photos from the Lokogoma installation",
       "Solar equipment and site details",
@@ -103,8 +97,6 @@ export const PROJECTS = [
     location: "Nanguru, Nigeria",
     overview:
       "Explore photos documenting the solar installation project in Nanguru, from the site and equipment through the completed work.",
-    testimonial:
-      "The Nanguru installation was planned around the site, and the team was helpful at every step.",
     highlights: [
       "Project photos from the Nanguru installation",
       "Solar equipment and site details",
@@ -135,8 +127,6 @@ export const PROJECTS = [
     location: "Homes across Nigeria",
     overview:
       "A home energy system designed around household usage, combining rooftop solar generation with battery storage to provide more dependable power throughout the day and night.",
-    testimonial:
-      "Having a solution planned around our household needs made choosing a home solar system much easier.",
     highlights: [
       "Solar generation designed for residential rooftops",
       "Battery storage for power after sunset",
@@ -153,8 +143,6 @@ export const PROJECTS = [
     location: "For growing businesses",
     overview:
       "A scalable solar energy solution that helps businesses meet their day-to-day power needs with a system planned around their premises and operating requirements.",
-    testimonial:
-      "The team understood our day-to-day business requirements and presented a practical solar plan for our space.",
     highlights: [
       "Solar solutions for offices and commercial spaces",
       "System capacity planned around business operations",
@@ -171,8 +159,6 @@ export const PROJECTS = [
     location: "Reliable power, day and night",
     overview:
       "A backup and storage setup focused on keeping essential appliances and spaces powered when grid supply is unavailable.",
-    testimonial:
-      "We valued the clear advice on which essential loads to prioritize for backup power and battery storage.",
     highlights: [
       "Battery storage for essential loads",
       "Backup power matched to your priorities",
@@ -189,8 +175,6 @@ export const PROJECTS = [
     location: "Rural Agribusiness",
     overview:
       "An independent power solution for remote agricultural operations, planned to support reliable energy access away from the utility grid.",
-    testimonial:
-      "The off-grid plan considered the realities of our remote site and the energy our operation needs.",
     highlights: [
       "Off-grid generation for remote locations",
       "Energy planning for agricultural operations",
@@ -207,8 +191,6 @@ export const PROJECTS = [
     location: "Industrial Zone, Ogun",
     overview:
       "A large-scale solar energy concept for industrial facilities, designed to support substantial and ongoing operational power requirements.",
-    testimonial:
-      "The proposed solar approach was easy to discuss in terms of our facility's operating needs and future capacity.",
     highlights: [
       "Large-scale solar array planning",
       "Designed around continuous facility operations",

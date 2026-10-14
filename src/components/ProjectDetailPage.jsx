@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import tw from "twrnc";
 import { PROJECTS } from "../data/projects.js";
-import TestimonialsSection from "./TestimonialsSection.jsx";
 
 export default function ProjectDetailPage({ project, onBack, onSelectProject, onContact }) {
   useEffect(() => {
@@ -177,8 +176,6 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
           </View>
         )}
       </View>
-
-      <TestimonialsSection testimonial={project.testimonial} projectTitle={project.title} />
 
       <View nativeID="project-detail-more">
         <Text style={{ color: "#f7f9fc", fontSize: 19, fontWeight: "700", marginBottom: 18 }}>

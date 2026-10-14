@@ -47,8 +47,8 @@ export default function HeroSection({ isMobile, width, height, headlineFontSize,
                     Powering Nigeria with <Text style={{ color: YELLOW }}>Clean Energy</Text>
                   </Text>
                   <Text style={styles.description}>
-                    Reliable solar installations designed around your home or business. Take control of
-                    your power, lower your bills, and keep life moving.
+                    Solar installations planned around your home or business. Explore options for your energy needs
+                    and discuss the right setup with our team.
                   </Text>
                   <View
                     style={[
@@ -67,7 +67,6 @@ export default function HeroSection({ isMobile, width, height, headlineFontSize,
                       Get Free Consultation  →
                     </ActionLink>
                     <ActionLink
-                      nativeID="packages"
                       onPress={() => navigate("packages")}
                       style={width <= 420 ? { width: "100%" } : null}
                     >
@@ -75,15 +74,8 @@ export default function HeroSection({ isMobile, width, height, headlineFontSize,
                     </ActionLink>
                   </View>
                   <View style={[tw`flex-row items-center`, { gap: 13, marginTop: 24, justifyContent: "center" }]}>
-                    <View style={tw`flex-row items-center`}>
-                      {["A", "T", "K", "+"].map((initial, index) => (
-                        <View key={initial} style={[styles.avatar, styles[`avatar${index}`]]}>
-                          <Text style={styles.avatarText}>{initial}</Text>
-                        </View>
-                      ))}
-                    </View>
                     <Text style={styles.trustCaption}>
-                      <Text style={{ color: "#dfe7f1", fontWeight: "700" }}>Trusted across Nigeria</Text>
+                      <Text style={{ color: "#dfe7f1", fontWeight: "700" }}>Residential and commercial solar</Text>
                       {"\n"}Making the switch to dependable energy.
                     </Text>
                   </View>

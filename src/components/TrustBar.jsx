@@ -30,9 +30,9 @@ export default function TrustBar({ isMobile }) {
                           <Text style={styles.trustIntroText}>Built on trust. Powered by the sun.</Text>
                         </View>
                         <View nativeID="trust-stats" style={tw`w-full flex-row items-stretch`}>
-                          <TrustStat icon="✦" value="500+" label="Installations" color="#facc15" mobile={isMobile} />
-                          <TrustStat icon="⌁" value="10+" label="Years Experience" color="#34d399" mobile={isMobile} />
-                          <TrustStat icon="◷" value="24/7" label="Support" color="#77b9ff" mobile={isMobile} />
+                          <TrustStat icon="✦" value="Tailored" label="System planning" color="#facc15" mobile={isMobile} />
+                          <TrustStat icon="⌁" value="Professional" label="Installation" color="#34d399" mobile={isMobile} />
+                          <TrustStat icon="◷" value="Ongoing" label="Support" color="#77b9ff" mobile={isMobile} />
                         </View>
                       </View>
                       </Reveal>

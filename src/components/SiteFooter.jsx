@@ -41,6 +41,7 @@ export default function SiteFooter({ isMobile, navigate }) {
                             {[
                               ["About us", "about"],
                               ["Services", "services"],
+                              ["Solar solutions", "packages"],
                               ["Projects", "projects"],
                               ["Contact", "contact"],
                             ].map(([label, id]) => (
@@ -60,12 +61,19 @@ export default function SiteFooter({ isMobile, navigate }) {
                               <Text style={styles.footerChatText}>Chat with our team</Text>
                               <Text style={{ color: YELLOW, fontSize: 15 }}>↗</Text>
                             </Pressable>
+                            <Pressable
+                              accessibilityRole="link"
+                              onPress={() => window.open("/privacy.html", "_blank", "noopener,noreferrer")}
+                              style={tw`mt-3`}
+                            >
+                              <Text style={styles.footerLink}>Privacy policy</Text>
+                            </Pressable>
                           </View>
                           </View>
                         </View>
                         <View style={[tw`w-full flex-row flex-wrap items-center justify-center gap-2.5 pt-3`, styles.footerBottom, isMobile && tw`flex-col`]}>
                           <Text style={styles.footerCopyright}>© 2026 JODU-TECH LTD. All rights reserved.</Text>
-                          <Text style={styles.footerCertification}>Licensed &amp; Certified Solar Installer</Text>
+                          <Text style={styles.footerCertification}>Solar solutions for homes and businesses</Text>
                         </View>
                       </View>
                       </Reveal>

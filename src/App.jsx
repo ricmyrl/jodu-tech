@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { LazyMotion, MotionConfig, domAnimation } from "framer-motion";
 import { Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 import tw from "twrnc";
-import { LINK, MUTED, YELLOW } from "./constants.js";
+import { LINK, MUTED, YELLOW, createWhatsAppLink } from "./constants.js";
 import { styles } from "./styles.js";
 import TopNavigation from "./components/TopNavigation.jsx";
 import HeroSection from "./components/HeroSection.jsx";
 import TrustBar from "./components/TrustBar.jsx";
 import AboutSection from "./components/AboutSection.jsx";
 import ServicesSection from "./components/ServicesSection.jsx";
+import PackagesSection from "./components/PackagesSection.jsx";
 import ProjectsSection from "./components/ProjectsSection.jsx";
 import CertificationRibbon from "./components/CertificationRibbon.jsx";
 import ContactSection from "./components/ContactSection.jsx";
@@ -56,9 +57,34 @@ function App() {
   const selectedProject = projectSlug ? getProjectBySlug(projectSlug) : null;
 
   useEffect(() => {
-    document.title = selectedProject
+    const title = selectedProject
       ? `${selectedProject.title} | JODU-TECH LTD`
       : "JODU-TECH LTD | Powering Nigeria with Clean Energy";
+    const description = selectedProject
+      ? selectedProject.description
+      : "Explore solar solutions for homes, businesses, backup power, and off-grid needs. Discuss a system tailored to your site and energy use with JODU-TECH LTD.";
+    const pagePath = selectedProject ? `/projects/${encodeURIComponent(selectedProject.slug)}` : "/";
+    const canonicalUrl = `${window.location.origin}${pagePath}`;
+    const imageUrl = selectedProject
+      ? new URL(selectedProject.image, window.location.origin).href
+      : new URL("/teamImage.jpg", window.location.origin).href;
+
+    document.title = title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute("content", description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
+    document.querySelector('meta[property="og:image"]')?.setAttribute("content", imageUrl);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", description);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.append(canonical);
+    }
+    canonical.href = canonicalUrl;
   }, [selectedProject]);
 
   useEffect(() => {
@@ -151,9 +177,17 @@ function App() {
       setContactStatus("Please complete all fields before continuing.");
       return;
     }
+    if (name.trim().length > 100 || email.trim().length > 254 || message.trim().length > 2000) {
+      setContactStatus("Please shorten your details and try again.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setContactStatus("Please enter a valid email address.");
+      return;
+    }
 
     const text = `Hello JODU-TECH LTD, I'd like to discuss a solar project.\n\nName: ${name.trim()}\nEmail: ${email.trim()}\nProject details: ${message.trim()}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    window.open(createWhatsAppLink(text), "_blank", "noopener,noreferrer");
     setContactStatus("Your message is ready in WhatsApp. Review it and press send to reach us.");
   };
 
@@ -197,6 +231,7 @@ function App() {
               <TrustBar isMobile={isMobile} />
               <AboutSection isMobile={isMobile} />
               <ServicesSection isMobile={isMobile} navigate={navigate} />
+              <PackagesSection isMobile={isMobile} onContact={() => navigate("contact")} />
               <ProjectsSection isMobile={isMobile} onSelectProject={navigateToProject} />
               <CertificationRibbon isMobile={isMobile} />
               <ContactSection isMobile={isMobile} contactForm={contactForm} setContactForm={setContactForm} submitContact={submitContact} contactStatus={contactStatus} />

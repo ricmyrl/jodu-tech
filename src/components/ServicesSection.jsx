@@ -22,7 +22,7 @@ export default function ServicesSection() {
                             <Text style={styles.solutionsTitle}>Everything you need to switch on.</Text>
                           </View>
                           <Text style={[styles.solutionsDescription, styles.servicesIntro]}>
-                            One trusted team to plan, install, and support your solar journey.
+                            Planning, installation, and support for your solar system.
                           </Text>
                         </View>
                         </Reveal>

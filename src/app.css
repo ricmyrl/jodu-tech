@@ -141,18 +141,19 @@ body {
   font-family: "Orbitron", sans-serif !important;
 }
 
-#project-testimonial {
-  padding-top: 42px;
-  padding-bottom: 34px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.24);
+#packages {
+  scroll-margin-top: 110px;
+  padding-top: 44px;
+  padding-bottom: 52px;
 }
 
-#project-testimonial-heading {
-  margin-bottom: 20px;
-  text-align: left;
+#packages-heading {
+  max-width: 720px;
+  margin: 0 auto 28px;
+  text-align: center;
 }
 
-#project-testimonial-eyebrow {
+#packages-eyebrow {
   display: block;
   color: #34d399;
   font-family: "DM Sans", sans-serif;
@@ -161,74 +162,68 @@ body {
   letter-spacing: 1.5px;
 }
 
-#project-testimonial-title {
+#packages-title {
   display: block;
   margin-top: 12px;
   color: #f7f9fc;
   font-family: "Orbitron", sans-serif;
-  font-size: 22px;
+  font-size: clamp(22px, 3vw, 32px);
   font-weight: 700;
-  text-align: left;
+  line-height: 1.3;
 }
 
-#project-testimonial-card {
-  max-width: 780px;
+#packages-description {
+  display: block;
+  margin-top: 12px;
+  color: #aab8c9;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+#packages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+#packages-grid > * {
+  min-width: 0;
+}
+
+#packages-grid [id^="package-card-"] {
+  height: 100%;
+  min-height: 210px;
   padding: 22px;
   border: 1px solid rgba(250, 204, 21, 0.35);
   background: linear-gradient(145deg, rgba(15, 31, 52, 0.88), rgba(7, 20, 38, 0.84));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
-#project-testimonial-mark {
+#packages-grid [id^="package-number-"] {
   display: block;
-  height: 36px;
-  color: #facc15;
-  font-family: "Orbitron", sans-serif;
-  font-size: 52px;
-  line-height: 1;
-}
-
-#project-testimonial-quote {
-  display: block;
-  margin-top: 14px;
-  color: #e1eaf3;
+  color: #34d399;
   font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
 }
 
-#project-testimonial-attribution {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-#project-testimonial-avatar {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  border: 1px solid rgba(52, 211, 153, 0.65);
-  background: radial-gradient(circle, rgba(52, 211, 153, 0.18), rgba(52, 211, 153, 0.03));
-}
-
-#project-testimonial-name {
+#packages-grid [id^="package-title-"] {
   display: block;
+  margin-top: 10px;
   color: #f7f9fc;
   font-family: "Orbitron", sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 700;
 }
 
-#project-testimonial-label {
+#packages-grid [id^="package-description-"] {
   display: block;
-  margin-top: 4px;
-  color: #8fa1b6;
+  margin-top: 8px;
+  color: #aab8c9;
   font-family: "DM Sans", sans-serif;
-  font-size: 10px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
 #project-detail {
@@ -775,12 +770,13 @@ body {
     padding-top: 12px;
   }
 
-  #project-testimonial {
-    padding-top: 32px;
-    padding-bottom: 26px;
+  #packages-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
   }
 
-  #project-testimonial-card {
+  #packages-grid [id^="package-card-"] {
+    min-height: auto;
     padding: 18px;
   }
 

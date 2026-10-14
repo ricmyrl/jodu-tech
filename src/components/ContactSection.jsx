@@ -37,9 +37,14 @@ export default function ContactSection({ isMobile, contactForm, setContactForm, 
                         <Reveal style={{ flex: 0.9 }} delay={0.1}>
                         <View style={[tw`w-full max-w-[500px]`, styles.contactCard]}>
                           <Text style={styles.contactFormTitle}>Request a consultation</Text>
-                          <Text style={styles.contactFormHint}>Fill in the details and continue securely in WhatsApp.</Text>
+                          <Text style={styles.contactFormHint}>Fill in the details and continue in WhatsApp.</Text>
+                          <Text style={styles.contactPrivacyNotice}>
+                            Continuing opens WhatsApp with your message ready to review. This website does not store your form details.
+                          </Text>
                           <TextInput
                             accessibilityLabel="Your name"
+                            autoComplete="name"
+                            maxLength={100}
                             value={contactForm.name}
                             onChangeText={(name) => setContactForm((form) => ({ ...form, name }))}
                             placeholder="Your name"
@@ -49,6 +54,8 @@ export default function ContactSection({ isMobile, contactForm, setContactForm, 
                           />
                           <TextInput
                             accessibilityLabel="Email address"
+                            autoComplete="email"
+                            maxLength={254}
                             value={contactForm.email}
                             onChangeText={(email) => setContactForm((form) => ({ ...form, email }))}
                             placeholder="Email address"
@@ -60,6 +67,8 @@ export default function ContactSection({ isMobile, contactForm, setContactForm, 
                           />
                           <TextInput
                             accessibilityLabel="Tell us about your project"
+                            autoComplete="off"
+                            maxLength={2000}
                             value={contactForm.message}
                             onChangeText={(message) => setContactForm((form) => ({ ...form, message }))}
                             placeholder="Tell us about your project"
@@ -78,6 +87,13 @@ export default function ContactSection({ isMobile, contactForm, setContactForm, 
                             <Text style={{ color: "#facc15", fontSize: 16, fontWeight: "700" }}>→</Text>
                           </Pressable>
                           </MotionDiv>
+                          <Pressable
+                            accessibilityRole="link"
+                            onPress={() => window.open("/privacy.html", "_blank", "noopener,noreferrer")}
+                            style={tw`mt-3 self-start`}
+                          >
+                            <Text style={styles.contactPrivacyLink}>Read our privacy policy</Text>
+                          </Pressable>
                           <AnimatePresence mode="wait">
                             {!!contactStatus && (
                               <MotionDiv

@@ -89,16 +89,6 @@ export const styles = {
     lineHeight: 22,
     textAlign: "center",
   },
-  avatar: {
-    width: 31,
-    height: 31,
-    alignItems: "center",
-    justifyContent: "center",
-    marginLeft: -5,
-    borderWidth: 2,
-    borderColor: "#facc15",
-  },
-  avatarText: { color: "#fff", fontSize: 10, fontWeight: "700" },
   trustCaption: { color: "#8292a7", fontSize: 9, lineHeight: 15 },
   trustBar: {
     alignSelf: "center",
@@ -274,6 +264,8 @@ export const styles = {
   },
   contactFormTitle: { color: "#f7f9fc", fontFamily: "Orbitron", fontSize: 13, fontWeight: "700", textAlign: "left" },
   contactFormHint: { marginTop: 6, marginBottom: 17, color: "#8fa1b6", fontSize: 10, lineHeight: 16, textAlign: "left" },
+  contactPrivacyNotice: { marginTop: -7, marginBottom: 8, color: "#8fa1b6", fontSize: 10, lineHeight: 16 },
+  contactPrivacyLink: { color: "#facc15", fontSize: 10, fontWeight: "700", textDecorationLine: "underline" },
   contactInput: {
     width: "100%",
     minHeight: 44,
