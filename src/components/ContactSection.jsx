@@ -8,7 +8,14 @@ import TrustStat from "./TrustStat.jsx";
 
 const MotionDiv = m.div;
 
-export default function ContactSection({ isMobile, contactForm, setContactForm, submitContact, contactStatus }) {
+export default function ContactSection({
+  isMobile,
+  isNarrowMobile,
+  contactForm,
+  setContactForm,
+  submitContact,
+  contactStatus,
+}) {
   return (
     <>
                       <Reveal style={{ width: "100%" }}>
@@ -35,7 +42,14 @@ export default function ContactSection({ isMobile, contactForm, setContactForm, 
                         </View>
                         </Reveal>
                         <Reveal style={{ flex: 0.9 }} delay={0.1}>
-                        <View style={[tw`w-full max-w-[500px]`, styles.contactCard]}>
+                        <View
+                          nativeID="contact-card"
+                          style={[
+                            tw`w-full max-w-[500px]`,
+                            styles.contactCard,
+                            isNarrowMobile && { minWidth: 0, padding: 18 },
+                          ]}
+                        >
                           <Text style={styles.contactFormTitle}>Request a consultation</Text>
                           <Text style={styles.contactFormHint}>Fill in the details and continue in WhatsApp.</Text>
                           <Text style={styles.contactPrivacyNotice}>

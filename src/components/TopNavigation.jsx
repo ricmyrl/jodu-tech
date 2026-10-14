@@ -6,7 +6,15 @@ import tw from "twrnc";
 
 const MotionDiv = m.div;
 
-export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigate, activeNavId }) {
+export default function TopNavigation({
+  isCompactNav,
+  showCompactQuote,
+  isNarrowMobile,
+  menuOpen,
+  setMenuOpen,
+  navigate,
+  activeNavId,
+}) {
   return (
           <MotionDiv
               id="site-header"
@@ -17,8 +25,8 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
                 position: "fixed",
                 zIndex: 20,
                 top: 22,
-                left: isMobile ? "3%" : "6%",
-                width: isMobile ? "94%" : "88%",
+                left: isCompactNav ? "3%" : "6%",
+                width: isCompactNav ? "94%" : "88%",
               }}
             >
           <View
@@ -26,7 +34,7 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
                 tw`flex-row items-center justify-between`,
                 styles.header,
                 { marginTop: 0 },
-                isMobile && { minHeight: 66, paddingHorizontal: 14 },
+                isCompactNav && { minHeight: 66, paddingHorizontal: isNarrowMobile ? 10 : 14 },
               ]}
             >
             <Pressable
@@ -37,14 +45,15 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
               style={tw`flex-row items-center`}
             >
               <Image
+                nativeID="header-logo"
                 source={{ uri: "/JoduLogo.svg" }}
                 accessibilityLabel="JODU-TECH LTD"
                 resizeMode="contain"
-                style={styles.brandLogo}
+                style={[styles.brandLogo, isNarrowMobile && { width: 112 }]}
               />
             </Pressable>
     
-            {isMobile ? (
+            {isCompactNav ? (
               <View style={tw`flex-row items-center`}>
                 <Pressable
                   nativeID="nav-menu-toggle"
@@ -52,20 +61,32 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
                   accessibilityLabel={menuOpen ? "Close navigation" : "Open navigation"}
                   accessibilityState={{ expanded: menuOpen }}
                   onPress={() => setMenuOpen((open) => !open)}
-                  style={styles.menuButton}
+                  style={[
+                    styles.menuButton,
+                    isNarrowMobile && { width: 34, height: 36 },
+                  ]}
                 >
                   <Text style={{ color: "#eff4fa", fontSize: 20, lineHeight: 24 }}>
                     {menuOpen ? "×" : "☰"}
                   </Text>
                 </Pressable>
-                <Pressable
-                  nativeID="nav-quote-cta"
-                  accessibilityRole="link"
-                  onPress={() => navigate("contact")}
-                  style={[styles.headerCta, { minHeight: 39, marginLeft: 9, paddingHorizontal: 12 }]}
-                >
-                  <Text style={styles.headerCtaText}>Get Quote  →</Text>
-                </Pressable>
+                {showCompactQuote && (
+                  <Pressable
+                    nativeID="nav-quote-cta"
+                    accessibilityRole="link"
+                    onPress={() => navigate("contact")}
+                    style={[
+                      styles.headerCta,
+                      {
+                        minHeight: 39,
+                        marginLeft: isNarrowMobile ? 6 : 9,
+                        paddingHorizontal: isNarrowMobile ? 7 : 12,
+                      },
+                    ]}
+                  >
+                    <Text style={styles.headerCtaText}>Get Quote  →</Text>
+                  </Pressable>
+                )}
               </View>
             ) : (
               <>
@@ -95,7 +116,7 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
             )}
     
             <AnimatePresence>
-              {isMobile && menuOpen && (
+              {isCompactNav && menuOpen && (
                 <MotionDiv
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -103,7 +124,10 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
                   transition={{ duration: 0.18 }}
                   style={{ position: "absolute", top: 76, right: 0, left: 0, zIndex: 21 }}
                 >
-                  <View style={[styles.mobileMenu, { position: "relative", top: 0, right: 0, left: 0 }]}>
+                  <View
+                    nativeID="mobile-nav-menu"
+                    style={[styles.mobileMenu, { position: "relative", top: 0, right: 0, left: 0 }]}
+                  >
                     {NAV_LINKS.map(([label, id]) => (
                       <Pressable
                         key={id}

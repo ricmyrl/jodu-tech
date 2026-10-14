@@ -61,6 +61,7 @@ export const styles = {
     padding: 8,
     borderWidth: 1,
     borderColor: "#facc15",
+    backgroundColor: "rgba(10, 25, 47, 0.99)",
   },
   mobileMenuItem: { paddingHorizontal: 13, paddingVertical: 12 },
   mobileMenuItemActive: { borderLeftWidth: 2, borderLeftColor: YELLOW },

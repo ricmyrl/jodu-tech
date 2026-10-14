@@ -221,7 +221,9 @@ function App() {
       style={tw`flex-1`}
     >
       <TopNavigation
-        isMobile={isMobile}
+        isCompactNav={width <= 800}
+        showCompactQuote={width > 760}
+        isNarrowMobile={width <= 375}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
         navigate={navigate}
@@ -262,7 +264,7 @@ function App() {
               <PackagesSection isMobile={isMobile} onContact={() => navigate("contact")} />
               <ProjectsSection isMobile={isMobile} onSelectProject={navigateToProject} />
               <CertificationRibbon isMobile={isMobile} />
-              <ContactSection isMobile={isMobile} contactForm={contactForm} setContactForm={setContactForm} submitContact={submitContact} contactStatus={contactStatus} />
+              <ContactSection isMobile={isMobile} isNarrowMobile={width <= 375} contactForm={contactForm} setContactForm={setContactForm} submitContact={submitContact} contactStatus={contactStatus} />
               <SiteFooter isMobile={isMobile} navigate={navigate} />
             </>
           )}

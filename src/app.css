@@ -19,7 +19,7 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  min-width: 320px;
+  min-width: 0;
   min-height: 100%;
   margin: 0;
 }
@@ -136,8 +136,22 @@ body {
   font-family: "Orbitron", sans-serif;
 }
 
-#projects,
-#projects * {
+#projects {
+  font-family: "DM Sans", sans-serif !important;
+}
+
+#projects [id="projects-eyebrow"],
+#projects [id="projects-description"],
+#projects [id^="project-category-"],
+#projects [id^="project-location-"],
+#projects [id^="project-description-"],
+#projects [id^="projects-add-button-label"],
+#projects [id^="projects-reset-button-label"] {
+  font-family: "DM Sans", sans-serif !important;
+}
+
+#projects [id="projects-title"],
+#projects [id^="project-title-"] {
   font-family: "Orbitron", sans-serif !important;
 }
 
@@ -832,8 +846,8 @@ body {
 
   #project-detail-media-scroll {
     gap: 10px;
-    margin-right: -16px;
-    padding-right: 16px;
+    margin-right: -12px;
+    padding-right: 12px;
   }
 
   #project-detail-media-scroll > [id^="project-detail-media-item-"] {
@@ -939,6 +953,18 @@ body {
       rgba(5, 16, 29, 0.9) 100%
     );
   }
+}
+
+@media (max-width: 375px) {
+  #site-header #header-logo {
+    width: 112px !important;
+  }
+
+  #site-header #nav-menu-toggle {
+    width: 34px;
+    height: 36px;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
