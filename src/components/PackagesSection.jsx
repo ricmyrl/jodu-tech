@@ -48,9 +48,16 @@ export default function PackagesSection({ isMobile, onContact }) {
               <Pressable
                 accessibilityRole="link"
                 onPress={onContact}
-                style={tw`mt-5 self-start border border-[#FACC15] px-4 py-3`}
+                style={[
+                  tw`mt-5 self-start border border-[#FACC15] px-4 py-3`,
+                  isMobile && {
+                    alignSelf: "stretch",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  },
+                ]}
               >
-                <Text style={{ color: "#facc15", fontSize: 10, fontWeight: "700" }}>
+                <Text style={{ color: "#facc15", fontSize: 10, fontWeight: "700", textAlign: "center" }}>
                   REQUEST A TAILORED QUOTE →
                 </Text>
               </Pressable>

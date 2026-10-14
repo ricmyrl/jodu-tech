@@ -34,7 +34,7 @@ export const styles = {
     letterSpacing: -0.6,
   },
   brandSuffix: { color: "#8b9ab0", fontSize: 7, letterSpacing: 1 },
-  navLink: { color: "#adbacb", fontSize: 9, fontWeight: "600" },
+  navLink: { color: "#adbacb", fontFamily: "DM Sans", fontSize: 12, fontWeight: "600" },
   activeNavLink: { borderBottomWidth: 2, borderBottomColor: YELLOW, paddingBottom: 8 },
   headerCta: {
     minHeight: 44,
@@ -43,7 +43,7 @@ export const styles = {
     borderWidth: 1,
     borderColor: YELLOW,
   },
-  headerCtaText: { color: YELLOW, fontSize: 9, fontWeight: "800" },
+  headerCtaText: { color: YELLOW, fontFamily: "DM Sans", fontSize: 12, fontWeight: "800" },
   menuButton: {
     width: 39,
     height: 39,
@@ -63,7 +63,8 @@ export const styles = {
     borderColor: "#facc15",
   },
   mobileMenuItem: { paddingHorizontal: 13, paddingVertical: 12 },
-  mobileMenuText: { color: "#dfe7f1", fontSize: 12, fontWeight: "600" },
+  mobileMenuItemActive: { borderLeftWidth: 2, borderLeftColor: YELLOW },
+  mobileMenuText: { color: "#dfe7f1", fontFamily: "DM Sans", fontSize: 14, fontWeight: "600" },
   heroCopy: { alignSelf: "center", alignItems: "center" },
   eyebrowDot: {
     width: 7,

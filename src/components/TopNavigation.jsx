@@ -6,7 +6,7 @@ import tw from "twrnc";
 
 const MotionDiv = m.div;
 
-export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigate }) {
+export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigate, activeNavId }) {
   return (
           <MotionDiv
               id="site-header"
@@ -32,6 +32,7 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
             <Pressable
               accessibilityRole="link"
               accessibilityLabel="JODU-TECH LTD home"
+              accessibilityState={{ selected: activeNavId === "home" }}
               onPress={() => navigate("home")}
               style={tw`flex-row items-center`}
             >
@@ -46,6 +47,7 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
             {isMobile ? (
               <View style={tw`flex-row items-center`}>
                 <Pressable
+                  nativeID="nav-menu-toggle"
                   accessibilityRole="button"
                   accessibilityLabel={menuOpen ? "Close navigation" : "Open navigation"}
                   accessibilityState={{ expanded: menuOpen }}
@@ -57,6 +59,7 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
                   </Text>
                 </Pressable>
                 <Pressable
+                  nativeID="nav-quote-cta"
                   accessibilityRole="link"
                   onPress={() => navigate("contact")}
                   style={[styles.headerCta, { minHeight: 39, marginLeft: 9, paddingHorizontal: 12 }]}
@@ -67,18 +70,21 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
             ) : (
               <>
                 <View style={[tw`flex-row items-center`, { gap: 22 }]}>
-                  {NAV_LINKS.map(([label, id], index) => (
+                  {NAV_LINKS.map(([label, id]) => (
                     <Pressable
                       key={id}
+                      nativeID={`nav-link-${id}`}
                       accessibilityRole="link"
+                      accessibilityState={{ selected: activeNavId === id }}
                       onPress={() => navigate(id)}
-                      style={index === 0 ? styles.activeNavLink : null}
+                      style={activeNavId === id ? styles.activeNavLink : null}
                     >
-                      <Text style={[styles.navLink, index === 0 && { color: "#f7f9fc" }]}>{label}</Text>
+                      <Text style={[styles.navLink, activeNavId === id && { color: "#f7f9fc" }]}>{label}</Text>
                     </Pressable>
                   ))}
                 </View>
                 <Pressable
+                  nativeID="nav-quote-cta"
                   accessibilityRole="link"
                   onPress={() => navigate("contact")}
                   style={styles.headerCta}
@@ -101,11 +107,23 @@ export default function TopNavigation({ isMobile, menuOpen, setMenuOpen, navigat
                     {NAV_LINKS.map(([label, id]) => (
                       <Pressable
                         key={id}
+                        nativeID={`mobile-nav-link-${id}`}
                         accessibilityRole="link"
+                        accessibilityState={{ selected: activeNavId === id }}
                         onPress={() => navigate(id)}
-                        style={styles.mobileMenuItem}
+                        style={[
+                          styles.mobileMenuItem,
+                          activeNavId === id && styles.mobileMenuItemActive,
+                        ]}
                       >
-                        <Text style={styles.mobileMenuText}>{label}</Text>
+                        <Text
+                          style={[
+                            styles.mobileMenuText,
+                            activeNavId === id && { color: "#facc15" },
+                          ]}
+                        >
+                          {label}
+                        </Text>
                       </Pressable>
                     ))}
                   </View>

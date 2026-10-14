@@ -31,6 +31,9 @@ function App() {
   const { width, height } = useWindowDimensions();
   const isMobile = width <= 760;
   const [projectSlug, setProjectSlug] = useState(() => getProjectSlugFromPath());
+  const [activeNavId, setActiveNavId] = useState(() =>
+    getProjectSlugFromPath() ? "projects" : "home",
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [chatHovered, setChatHovered] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -46,7 +49,9 @@ function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setProjectSlug(getProjectSlugFromPath());
+      const slug = getProjectSlugFromPath();
+      setProjectSlug(slug);
+      if (slug) setActiveNavId("projects");
       window.scrollTo(0, 0);
     };
 
@@ -93,16 +98,31 @@ function App() {
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
         setScrollY(window.scrollY);
+        if (!projectSlug) {
+          const sectionIds = ["home", "about", "services", "packages", "projects", "contact"];
+          const activationLine = Math.min(window.innerHeight * 0.38, 300);
+          let currentSection = "home";
+          for (const id of sectionIds) {
+            const section = document.getElementById(id);
+            if (section && section.getBoundingClientRect().top <= activationLine) {
+              currentSection = id;
+            }
+          }
+          setActiveNavId((current) => current === currentSection ? current : currentSection);
+        }
         frame = 0;
       });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("scroll", handleScroll, { passive: true, capture: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    handleScroll();
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("scroll", handleScroll, true);
+      window.removeEventListener("resize", handleScroll);
       window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [projectSlug]);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -145,6 +165,7 @@ function App() {
 
   const navigate = (id) => {
     setMenuOpen(false);
+    setActiveNavId(id);
     if (projectSlug) {
       window.history.pushState({}, "", "/");
       setProjectSlug(null);
@@ -158,6 +179,7 @@ function App() {
 
   const navigateToProject = (slug) => {
     setMenuOpen(false);
+    setActiveNavId("projects");
     window.history.pushState({ projectSlug: slug }, "", `/projects/${encodeURIComponent(slug)}`);
     setProjectSlug(slug);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -198,7 +220,13 @@ function App() {
       nativeID="app-root"
       style={tw`flex-1`}
     >
-      <TopNavigation isMobile={isMobile} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigate={navigate} />
+      <TopNavigation
+        isMobile={isMobile}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        navigate={navigate}
+        activeNavId={activeNavId}
+      />
 
       <ScrollView
         nativeID="home"
