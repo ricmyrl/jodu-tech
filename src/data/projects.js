@@ -136,6 +136,47 @@ export const PROJECTS = [
       alt: `Nanguru solar project, photo ${index + 1}`,
     })),
   },
+  {
+    id: 10,
+    slug: "taraba-solar-project",
+    category: "SOLAR INSTALLATION",
+    title: "Taraba Solar Project",
+    description:
+      "A 1MWp solar mini-grid project dedicated to rural electrification across Taraba State, Nigeria. This large-scale off-grid installation delivers reliable, continuous clean energy to underserved communities boosting local economic growth, improving living standards, and powering households, schools, and healthcare facilities.",
+    heroDescription:
+      "A 1MWp solar mini-grid project dedicated to rural electrification across Taraba State, Nigeria. This large-scale off-grid installation delivers reliable, continuous clean energy to underserved communities boosting local economic growth, improving living standards, and powering households, schools, and healthcare facilities.",
+    image: "/projects/taraba/IMG-20261015-WA0022.jpg",
+    location: "Taraba State, Nigeria",
+    overview:
+      "A 1MWp solar mini-grid project delivering reliable off-grid electricity to underserved communities across Taraba State, powering homes, schools, and healthcare facilities.",
+    highlights: [
+      "1MWp solar mini-grid for rural electrification",
+      "Clean, reliable power for households and essential community services",
+      "Supporting economic growth and improved living standards",
+      "A real project delivered by JODU-TECH LTD",
+    ],
+    media: [
+      "IMG-20261015-WA0014.jpg",
+      "IMG-20261015-WA0015.jpg",
+      "IMG-20261015-WA0017.jpg",
+      "IMG-20261015-WA0018.jpg",
+      "IMG-20261015-WA0021.jpg",
+      "IMG-20261015-WA0022.jpg",
+      "IMG-20261015-WA0023.jpg",
+      "IMG-20261015-WA0025.jpg",
+      "IMG-20261015-WA0026.jpg",
+      "IMG-20261015-WA0027.jpg",
+      "IMG-20261015-WA0028.jpg",
+      "IMG-20261015-WA0029.jpg",
+      "IMG-20261015-WA0030.jpg",
+      "IMG-20261015-WA0031.jpg",
+      "IMG-20261015-WA0034.jpg",
+    ].map((filename, index) => ({
+      type: "image",
+      src: `/projects/taraba/${filename}`,
+      alt: `Taraba solar project, photo ${index + 1}`,
+    })),
+  },
 ];
 
 export function getProjectBySlug(slug) {

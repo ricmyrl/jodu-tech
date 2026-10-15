@@ -36,7 +36,7 @@ function updateSolarAppearance(hovered = false) {
   orb.dataset.phase = phase;
   orb.dataset.visible = shouldShow ? "true" : "false";
   orb.style.setProperty("opacity", shouldShow ? "1" : "0", "important");
-  orb.style.setProperty("--sun-y", `${Math.round(16 - sunHeight * 32)}px`);
+  orb.style.setProperty("--sun-y", `${(16 - sunHeight * 32) / 176 * 100}%`);
   syncAmbientLight();
 }
 
@@ -53,7 +53,11 @@ export default function SunOrb() {
     const handlePointerEnter = () => {
       hovered = true;
       updateSolarAppearance(true);
-      resizeSun(window.innerWidth <= 760 ? 56 : 80);
+      resizeSun(
+        window.innerWidth <= 760
+          ? Math.round(Math.min(56, Math.max(40, window.innerWidth * 0.14)))
+          : 80,
+      );
     };
     const handlePointerLeave = () => {
       hovered = false;

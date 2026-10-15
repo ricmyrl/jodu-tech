@@ -97,7 +97,16 @@ function App() {
     const handleScroll = () => {
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
-        setScrollY(window.scrollY);
+        const currentScrollY = window.scrollY;
+        setScrollY(currentScrollY);
+        const ambientGlow = document.getElementById("ambient-glow");
+        if (ambientGlow) {
+          const fadeProgress = Math.min(1, currentScrollY / 360);
+          ambientGlow.style.setProperty(
+            "--ambient-scroll-opacity",
+            String(1 - fadeProgress),
+          );
+        }
         if (!projectSlug) {
           const sectionIds = ["home", "about", "services", "packages", "projects", "contact"];
           const activationLine = Math.min(window.innerHeight * 0.38, 300);

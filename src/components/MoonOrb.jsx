@@ -37,7 +37,11 @@ export default function MoonOrb() {
     const handlePointerEnter = () => {
       hovered = true;
       updateLunarAppearance(true);
-      resizeMoon(window.innerWidth <= 760 ? 56 : 80);
+      resizeMoon(
+        window.innerWidth <= 760
+          ? Math.round(Math.min(44, Math.max(30, window.innerWidth * 0.11)))
+          : 80,
+      );
     };
     const handlePointerLeave = () => {
       hovered = false;

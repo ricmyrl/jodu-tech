@@ -70,7 +70,7 @@ body {
   pointer-events: none;
   transform: scale(0.92);
   transition:
-    opacity 1.2s ease,
+    opacity 180ms linear,
     transform 1.8s ease,
     filter 1.8s ease,
     background 1.8s ease;
@@ -113,7 +113,7 @@ body {
 }
 
 #ambient-glow[data-active="true"] {
-  opacity: 1;
+  opacity: var(--ambient-scroll-opacity, 1);
   filter: blur(0);
   transform: scale(1);
 }
@@ -1084,43 +1084,43 @@ body {
   #hero-sun-orb {
     top: 6px;
     right: 2px;
-    width: 116px;
-    height: 116px;
+    width: clamp(78px, 25vw, 116px);
+    height: clamp(78px, 25vw, 116px);
   }
 
   #hero-sun-orbit-one {
-    inset: 5px;
+    inset: 4%;
   }
 
   #hero-sun-orbit-two {
-    inset: 16px;
+    inset: 14%;
   }
 
   #hero-moon-orb {
     top: 6px;
     left: 2px;
-    width: 116px;
-    height: 116px;
+    width: clamp(78px, 25vw, 116px);
+    height: clamp(78px, 25vw, 116px);
   }
 
   #hero-moon-orbit-one {
-    inset: 5px;
+    inset: 4%;
   }
 
   #hero-moon-orbit-two {
-    inset: 16px;
+    inset: 14%;
   }
 
   #hero-moon-core {
-    top: 18px;
-    left: 12px;
-    width: 30px;
-    height: 30px;
+    top: 15.5%;
+    left: 10.3%;
+    width: clamp(24px, 7.7vw, 34px);
+    height: clamp(24px, 7.7vw, 34px);
   }
 
   #hero-sun-core {
-    width: 44px;
-    height: 44px;
+    width: clamp(32px, 10vw, 44px);
+    height: clamp(32px, 10vw, 44px);
   }
 
   #hero-sun-orb:hover #hero-sun-core,
