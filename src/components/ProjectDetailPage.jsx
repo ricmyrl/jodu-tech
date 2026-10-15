@@ -1,9 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import tw from "twrnc";
 import { PROJECTS } from "../data/projects.js";
 
 export default function ProjectDetailPage({ project, onBack, onSelectProject, onContact }) {
+  const [heroImageState, setHeroImageState] = useState({ slug: project?.slug, index: 0 });
+  const media = project?.media ?? [];
+  const heroImages = project
+    ? [
+        project.image,
+        ...media
+          .filter((item) => item.type === "image" && item.src !== project.image)
+          .map((item) => item.src),
+      ]
+    : [];
+  const heroImageIndex =
+    heroImageState.slug === project?.slug ? heroImageState.index : 0;
+
   useEffect(() => {
     const gallery = document.getElementById("project-detail-media-scroll");
     if (!gallery) return undefined;
@@ -24,6 +37,22 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
     return () => gallery.removeEventListener("wheel", handleWheel);
   }, [project?.slug]);
 
+  useEffect(() => {
+    if (!project || heroImages.length < 2) return undefined;
+
+    const intervalId = window.setInterval(() => {
+      setHeroImageState((current) => {
+        const currentIndex = current.slug === project.slug ? current.index : 0;
+        return {
+          slug: project.slug,
+          index: (currentIndex + 1) % heroImages.length,
+        };
+      });
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, [project?.slug, heroImages.length]);
+
   if (!project) {
     return (
       <View nativeID="project-not-found">
@@ -37,9 +66,7 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
       </View>
     );
   }
-
   const otherProjects = PROJECTS.filter((item) => item.slug !== project.slug);
-  const media = project.media ?? [];
 
   return (
     <View nativeID="project-detail">
@@ -53,9 +80,10 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
 
       <View nativeID="project-detail-hero">
         <Image
+          key={heroImages[heroImageIndex]}
           nativeID="project-detail-image"
-          source={{ uri: project.image }}
-          accessibilityLabel={`${project.category} project`}
+          source={{ uri: heroImages[heroImageIndex] ?? project.image }}
+          accessibilityLabel={`${project.title}, hero photo ${heroImageIndex + 1}`}
           resizeMode="cover"
           style={tw`absolute inset-0 h-full w-full`}
         />
@@ -83,7 +111,10 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
           <Text style={{ color: "#34d399", fontSize: 10, fontWeight: "700", letterSpacing: 1.5 }}>
             PROJECT OVERVIEW
           </Text>
-          <Text style={{ color: "#f7f9fc", fontSize: 22, fontWeight: "700", marginTop: 12 }}>
+          <Text
+            nativeID="project-detail-overview-title"
+            style={{ color: "#f7f9fc", fontSize: 22, fontWeight: "700", marginTop: 12 }}
+          >
             Energy designed around real needs.
           </Text>
           <Text style={{ color: "#aab8c9", fontSize: 14, lineHeight: 24, marginTop: 14 }}>
@@ -92,7 +123,10 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
         </View>
 
         <View nativeID="project-detail-highlights">
-          <Text style={{ color: "#f7f9fc", fontSize: 14, fontWeight: "700", marginBottom: 16 }}>
+          <Text
+            nativeID="project-detail-highlights-title"
+            style={{ color: "#f7f9fc", fontSize: 14, fontWeight: "700", marginBottom: 16 }}
+          >
             PROJECT HIGHLIGHTS
           </Text>
           {project.highlights.map((highlight) => (
@@ -182,33 +216,11 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
         )}
       </View>
 
-      {project.testimonial && (
-        <View nativeID="project-detail-testimonial">
-          <Text nativeID="project-detail-testimonial-eyebrow">CUSTOMER TESTIMONIAL</Text>
-          <Text nativeID="project-detail-testimonial-title">
-            {project.testimonial.title || "A customer’s experience"}
-          </Text>
-          <View nativeID="project-detail-testimonial-card">
-            <Text nativeID="project-detail-testimonial-quote-mark" accessibilityElementsHidden>
-              “
-            </Text>
-            <Text nativeID="project-detail-testimonial-quote" accessibilityRole="text">
-              {project.testimonial.quote}
-            </Text>
-            <Text nativeID="project-detail-testimonial-attribution">
-              {project.testimonial.attribution}
-            </Text>
-            {project.testimonial.attributionDetail && (
-              <Text nativeID="project-detail-testimonial-attribution-detail">
-                {project.testimonial.attributionDetail}
-              </Text>
-            )}
-          </View>
-        </View>
-      )}
-
       <View nativeID="project-detail-more">
-        <Text style={{ color: "#f7f9fc", fontSize: 19, fontWeight: "700", marginBottom: 18 }}>
+        <Text
+          nativeID="project-detail-more-title"
+          style={{ color: "#f7f9fc", fontSize: 19, fontWeight: "700", marginBottom: 18 }}
+        >
           Explore more projects
         </Text>
         <View nativeID="project-detail-related">

@@ -283,6 +283,16 @@ body {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
+  animation: project-hero-image-fade 900ms ease both;
+}
+
+@keyframes project-hero-image-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #project-detail-shade {
@@ -331,9 +341,10 @@ body {
   border-bottom: 1px solid rgba(148, 163, 184, 0.24);
 }
 
-#project-detail-copy > span:nth-child(2),
-#project-detail-highlights > span:first-child,
-#project-detail-more > span:first-child {
+#project-detail #project-detail-overview-title,
+#project-detail #project-detail-highlights-title,
+#project-detail #project-detail-gallery-title,
+#project-detail #project-detail-more-title {
   font-family: "Orbitron", sans-serif;
 }
 
@@ -344,72 +355,6 @@ body {
 
 #project-detail-gallery {
   padding: 38px 0 8px;
-}
-
-#project-detail-testimonial {
-  padding: 34px 0 8px;
-}
-
-#project-detail-testimonial-eyebrow {
-  display: block;
-  color: #34d399;
-  font-family: "DM Sans", sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
-#project-detail-testimonial-title {
-  display: block;
-  margin-top: 10px;
-  color: #f7f9fc;
-  font-family: "Orbitron", sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-#project-detail-testimonial-card {
-  position: relative;
-  margin-top: 18px;
-  padding: 26px 30px;
-  border: 1px solid rgba(250, 204, 21, 0.38);
-  background: linear-gradient(145deg, rgba(15, 31, 52, 0.88), rgba(7, 20, 38, 0.84));
-}
-
-#project-detail-testimonial-quote-mark {
-  display: block;
-  color: #facc15;
-  font-family: "Orbitron", sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-#project-detail-testimonial-quote {
-  display: block;
-  max-width: 900px;
-  margin-top: 8px;
-  color: #d7e0eb;
-  font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-#project-detail-testimonial-attribution {
-  display: block;
-  margin-top: 18px;
-  color: #facc15;
-  font-family: "DM Sans", sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-#project-detail-testimonial-attribution-detail {
-  display: block;
-  margin-top: 4px;
-  color: #aab8c9;
-  font-family: "DM Sans", sans-serif;
-  font-size: 11px;
 }
 
 #project-detail-gallery-heading {
@@ -999,19 +944,6 @@ body {
 
   #project-detail-gallery {
     padding-top: 26px;
-  }
-
-  #project-detail-testimonial {
-    padding-top: 24px;
-  }
-
-  #project-detail-testimonial-card {
-    padding: 20px;
-  }
-
-  #project-detail-testimonial-quote {
-    font-size: 14px;
-    line-height: 1.7;
   }
 
   #project-detail-more {
