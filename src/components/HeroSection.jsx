@@ -28,6 +28,11 @@ export default function HeroSection({ isMobile, width, height, headlineFontSize,
                   },
                 ]}
               >
+                <View
+                  nativeID="ambient-glow"
+                  style={styles.ambientGlow}
+                  pointerEvents="none"
+                />
                 <SunOrb />
                 <MoonOrb />
                 <Reveal style={{ width: "100%" }}>

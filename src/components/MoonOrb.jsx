@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { View } from "react-native";
+import { syncAmbientLight } from "../utils/ambientLight.js";
 
 const lagosTime = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Africa/Lagos",
@@ -20,6 +21,7 @@ function updateLunarAppearance(hovered = false) {
   orb.dataset.phase = isNight ? "night" : "day";
   orb.dataset.visible = shouldShow ? "true" : "false";
   orb.style.setProperty("opacity", shouldShow ? "1" : "0", "important");
+  syncAmbientLight();
 }
 
 export default function MoonOrb() {

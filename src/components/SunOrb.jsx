@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { View } from "react-native";
+import { syncAmbientLight } from "../utils/ambientLight.js";
 
 const lagosTime = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Africa/Lagos",
@@ -36,6 +37,7 @@ function updateSolarAppearance(hovered = false) {
   orb.dataset.visible = shouldShow ? "true" : "false";
   orb.style.setProperty("opacity", shouldShow ? "1" : "0", "important");
   orb.style.setProperty("--sun-y", `${Math.round(16 - sunHeight * 32)}px`);
+  syncAmbientLight();
 }
 
 export default function SunOrb() {

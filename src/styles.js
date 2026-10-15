@@ -3,8 +3,8 @@ import { MUTED, YELLOW } from "./constants.js";
 export const styles = {
   ambientGlow: {
     position: "absolute",
-    top: "16%",
-    right: -140,
+    top: -170,
+    left: -170,
     width: 440,
     height: 440,
   },

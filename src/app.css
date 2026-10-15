@@ -51,6 +51,73 @@ body {
   isolation: isolate;
 }
 
+#ambient-glow {
+  z-index: 0 !important;
+  right: auto !important;
+  left: -170px !important;
+  width: 460px !important;
+  height: 460px !important;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(196, 220, 255, 0.16) 0%,
+    rgba(156, 190, 240, 0.09) 32%,
+    rgba(120, 160, 220, 0.035) 58%,
+    transparent 74%
+  );
+  filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92);
+  transition:
+    opacity 1.2s ease,
+    transform 1.8s ease,
+    filter 1.8s ease,
+    background 1.8s ease;
+}
+
+#ambient-glow[data-source="sun"] {
+  right: -170px !important;
+  left: auto !important;
+}
+
+#ambient-glow[data-source="sun"][data-phase="dawn"] {
+  background: radial-gradient(
+    circle,
+    rgba(255, 190, 125, 0.18) 0%,
+    rgba(251, 146, 60, 0.1) 32%,
+    rgba(249, 115, 22, 0.04) 58%,
+    transparent 74%
+  );
+}
+
+#ambient-glow[data-source="sun"][data-phase="day"] {
+  background: radial-gradient(
+    circle,
+    rgba(255, 238, 150, 0.18) 0%,
+    rgba(250, 204, 21, 0.1) 32%,
+    rgba(245, 158, 11, 0.04) 58%,
+    transparent 74%
+  );
+}
+
+#ambient-glow[data-source="sun"][data-phase="dusk"],
+#ambient-glow[data-source="sun"][data-phase="night"] {
+  background: radial-gradient(
+    circle,
+    rgba(255, 165, 105, 0.17) 0%,
+    rgba(249, 115, 22, 0.09) 32%,
+    rgba(194, 65, 12, 0.04) 58%,
+    transparent 74%
+  );
+}
+
+#ambient-glow[data-active="true"] {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
 #root::before {
   position: fixed;
   z-index: -1;

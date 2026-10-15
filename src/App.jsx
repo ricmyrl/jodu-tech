@@ -244,8 +244,6 @@ function App() {
             backgroundColor: "transparent",
           }}
         >
-          <View style={styles.ambientGlow} pointerEvents="none" />
-
           <View style={{ height: isMobile ? 80 : 104 }} />
 
           {projectSlug ? (
