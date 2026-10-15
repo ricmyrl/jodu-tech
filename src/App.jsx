@@ -16,6 +16,7 @@ import ContactSection from "./components/ContactSection.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import ElectricBorderEffect from "./components/ElectricBorderEffect.jsx";
 import ProjectDetailPage from "./components/ProjectDetailPage.jsx";
+import TeamPage from "./components/TeamPage.jsx";
 import { getProjectBySlug } from "./data/projects.js";
 
 function scrollToSection(id) {
@@ -27,12 +28,17 @@ function getProjectSlugFromPath(pathname = window.location.pathname) {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
+function isTeamPath(pathname = window.location.pathname) {
+  return /^\/team\/?$/.test(pathname);
+}
+
 function App() {
   const { width, height } = useWindowDimensions();
   const isMobile = width <= 760;
   const [projectSlug, setProjectSlug] = useState(() => getProjectSlugFromPath());
+  const [teamPage, setTeamPage] = useState(() => isTeamPath());
   const [activeNavId, setActiveNavId] = useState(() =>
-    getProjectSlugFromPath() ? "projects" : "home",
+    getProjectSlugFromPath() ? "projects" : isTeamPath() ? "team" : "home",
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const [chatHovered, setChatHovered] = useState(false);
@@ -51,7 +57,9 @@ function App() {
     const handlePopState = () => {
       const slug = getProjectSlugFromPath();
       setProjectSlug(slug);
-      if (slug) setActiveNavId("projects");
+      const onTeamPage = isTeamPath();
+      setTeamPage(onTeamPage);
+      setActiveNavId(slug ? "projects" : onTeamPage ? "team" : "home");
       window.scrollTo(0, 0);
     };
 
@@ -62,13 +70,21 @@ function App() {
   const selectedProject = projectSlug ? getProjectBySlug(projectSlug) : null;
 
   useEffect(() => {
-    const title = selectedProject
-      ? `${selectedProject.title} | JODU-TECH LTD`
-      : "JODU-TECH LTD | Powering Nigeria with Clean Energy";
-    const description = selectedProject
-      ? selectedProject.description
-      : "Explore solar solutions for homes, businesses, backup power, and off-grid needs. Discuss a system tailored to your site and energy use with JODU-TECH LTD.";
-    const pagePath = selectedProject ? `/projects/${encodeURIComponent(selectedProject.slug)}` : "/";
+    const title = teamPage
+      ? "Meet the Team | JODU-TECH LTD"
+      : selectedProject
+        ? `${selectedProject.title} | JODU-TECH LTD`
+        : "JODU-TECH LTD | Powering Nigeria with Clean Energy";
+    const description = teamPage
+      ? "Meet the people and departments behind JODU-TECH's solar projects. Explore our sample team and reporting structure."
+      : selectedProject
+        ? selectedProject.description
+        : "Explore solar solutions for homes, businesses, backup power, and off-grid needs. Discuss a system tailored to your site and energy use with JODU-TECH LTD.";
+    const pagePath = teamPage
+      ? "/team"
+      : selectedProject
+        ? `/projects/${encodeURIComponent(selectedProject.slug)}`
+        : "/";
     const canonicalUrl = `${window.location.origin}${pagePath}`;
     const imageUrl = selectedProject
       ? new URL(selectedProject.image, window.location.origin).href
@@ -90,7 +106,7 @@ function App() {
       document.head.append(canonical);
     }
     canonical.href = canonicalUrl;
-  }, [selectedProject]);
+  }, [selectedProject, teamPage]);
 
   useEffect(() => {
     let frame = 0;
@@ -107,7 +123,7 @@ function App() {
             String(1 - fadeProgress),
           );
         }
-        if (!projectSlug) {
+        if (!projectSlug && !teamPage) {
           const sectionIds = ["home", "about", "services", "packages", "projects", "contact"];
           const activationLine = Math.min(window.innerHeight * 0.38, 300);
           let currentSection = "home";
@@ -131,7 +147,7 @@ function App() {
       window.removeEventListener("resize", handleScroll);
       window.cancelAnimationFrame(frame);
     };
-  }, [projectSlug]);
+  }, [projectSlug, teamPage]);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -175,9 +191,17 @@ function App() {
   const navigate = (id) => {
     setMenuOpen(false);
     setActiveNavId(id);
-    if (projectSlug) {
+    if (id === "team") {
+      if (!teamPage) window.history.pushState({}, "", "/team");
+      setProjectSlug(null);
+      setTeamPage(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    if (projectSlug || teamPage) {
       window.history.pushState({}, "", "/");
       setProjectSlug(null);
+      setTeamPage(false);
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => scrollToSection(id));
       });
@@ -189,6 +213,7 @@ function App() {
   const navigateToProject = (slug) => {
     setMenuOpen(false);
     setActiveNavId("projects");
+    setTeamPage(false);
     window.history.pushState({ projectSlug: slug }, "", `/projects/${encodeURIComponent(slug)}`);
     setProjectSlug(slug);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -197,6 +222,7 @@ function App() {
   const returnToProjects = () => {
     window.history.pushState({}, "", "/");
     setProjectSlug(null);
+    setTeamPage(false);
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => scrollToSection("projects"));
     });
@@ -262,11 +288,19 @@ function App() {
               onSelectProject={navigateToProject}
               onContact={() => navigate("contact")}
             />
+          ) : teamPage ? (
+            <>
+              <TeamPage
+                onBack={() => navigate("home")}
+                onContact={() => navigate("contact")}
+              />
+              <SiteFooter isMobile={isMobile} navigate={navigate} />
+            </>
           ) : (
             <>
               <HeroSection isMobile={isMobile} width={width} height={height} headlineFontSize={headlineFontSize} navigate={navigate} />
               <TrustBar isMobile={isMobile} />
-              <AboutSection isMobile={isMobile} />
+              <AboutSection isMobile={isMobile} onTeam={() => navigate("team")} />
               <ServicesSection isMobile={isMobile} navigate={navigate} />
               <PackagesSection isMobile={isMobile} onContact={() => navigate("contact")} />
               <ProjectsSection isMobile={isMobile} onSelectProject={navigateToProject} />

@@ -43,6 +43,7 @@ export default function SiteFooter({ isMobile, navigate }) {
                               ["Services", "services"],
                               ["Solar solutions", "packages"],
                               ["Projects", "projects"],
+                              ["Meet the team", "team"],
                               ["Contact", "contact"],
                             ].map(([label, id]) => (
                               <Pressable key={id} accessibilityRole="link" onPress={() => navigate(id)}>

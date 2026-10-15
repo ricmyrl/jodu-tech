@@ -8,7 +8,7 @@ import TrustStat from "./TrustStat.jsx";
 
 const MotionDiv = m.div;
 
-export default function AboutSection({ isMobile }) {
+export default function AboutSection({ isMobile, onTeam }) {
   return (
     <>
                       <Reveal style={{ width: "100%" }}>
@@ -45,7 +45,13 @@ export default function AboutSection({ isMobile }) {
                             ))}
                           </View>
                         </View>
-                        <View nativeID="about-team-visual" style={[tw`relative min-h-[350px] flex-1 overflow-hidden`, styles.aboutVisual]}>
+                        <Pressable
+                          nativeID="about-team-visual"
+                          accessibilityRole="link"
+                          accessibilityLabel="Meet the JODU-TECH team"
+                          onPress={onTeam}
+                          style={[tw`relative min-h-[350px] flex-1 overflow-hidden`, styles.aboutVisual]}
+                        >
                           <Image
                             nativeID="about-team-image"
                             source={{ uri: "/teamImage.jpg" }}
@@ -58,7 +64,7 @@ export default function AboutSection({ isMobile }) {
                             <Text nativeID="about-badge-overline" style={styles.aboutBadgeOverline}>ENERGY THAT WORKS FOR YOU</Text>
                             <Text nativeID="about-badge-title" style={styles.aboutBadgeTitle}>Clean power. Real peace of mind.</Text>
                           </View>
-                        </View>
+                        </Pressable>
                       </View>
                       </Reveal>
     </>
