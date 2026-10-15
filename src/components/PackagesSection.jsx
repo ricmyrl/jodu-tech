@@ -57,7 +57,15 @@ export default function PackagesSection({ isMobile, onContact }) {
                   },
                 ]}
               >
-                <Text style={{ color: "#facc15", fontSize: 10, fontWeight: "700", textAlign: "center" }}>
+                <Text
+                  style={{
+                    color: "#facc15",
+                    fontFamily: "DM Sans",
+                    fontSize: 10,
+                    fontWeight: "700",
+                    textAlign: "center",
+                  }}
+                >
                   REQUEST A TAILORED QUOTE →
                 </Text>
               </Pressable>

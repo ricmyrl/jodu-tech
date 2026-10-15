@@ -193,7 +193,7 @@ body {
   text-align: center;
 }
 
-#packages-title {
+#packages #packages-title {
   display: block;
   margin-top: 12px;
   color: #f7f9fc;
