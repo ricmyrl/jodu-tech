@@ -21,9 +21,9 @@ export default function AboutSection({ isMobile }) {
                         ]}
                       >
                         <View style={[tw`flex-1`, styles.aboutCopy]}>
-                          <Text style={[styles.solutionsEyebrow, { textAlign: "left" }]}>ABOUT JODU-TECH</Text>
-                          <Text style={[styles.solutionsTitle, { textAlign: "left" }]}>A brighter, more reliable way to power life.</Text>
-                          <Text style={styles.aboutDescription}>
+                          <Text nativeID="about-eyebrow" style={[styles.solutionsEyebrow, { textAlign: "left" }]}>ABOUT JODU-TECH</Text>
+                          <Text nativeID="about-title" style={[styles.solutionsTitle, { textAlign: "left" }]}>A brighter, more reliable way to power life.</Text>
+                          <Text nativeID="about-description" style={styles.aboutDescription}>
                             We help Nigerian homes and businesses take control of their electricity with solar
                             systems designed around how they live and work. From the first conversation to
                             installation and ongoing care, we make the move to cleaner energy clear and
@@ -36,10 +36,10 @@ export default function AboutSection({ isMobile }) {
                               ["03", "Support that stays with you", "Guidance from planning through aftercare."],
                             ].map(([number, title, copy]) => (
                               <View key={number} style={[tw`flex-row items-start justify-center gap-3`, styles.aboutPoint]}>
-                                <Text style={styles.aboutPointNumber}>{number}</Text>
+                                <Text nativeID={`about-point-number-${number}`} style={styles.aboutPointNumber}>{number}</Text>
                                 <View style={{ flex: 1 }}>
-                                  <Text style={styles.aboutPointTitle}>{title}</Text>
-                                  <Text style={styles.aboutPointDescription}>{copy}</Text>
+                                  <Text nativeID={`about-point-title-${number}`} style={styles.aboutPointTitle}>{title}</Text>
+                                  <Text nativeID={`about-point-description-${number}`} style={styles.aboutPointDescription}>{copy}</Text>
                                 </View>
                               </View>
                             ))}
@@ -55,8 +55,8 @@ export default function AboutSection({ isMobile }) {
                           />
                           <View style={styles.aboutImageShade} />
                           <View style={styles.aboutImageBadge}>
-                            <Text style={styles.aboutBadgeOverline}>ENERGY THAT WORKS FOR YOU</Text>
-                            <Text style={styles.aboutBadgeTitle}>Clean power. Real peace of mind.</Text>
+                            <Text nativeID="about-badge-overline" style={styles.aboutBadgeOverline}>ENERGY THAT WORKS FOR YOU</Text>
+                            <Text nativeID="about-badge-title" style={styles.aboutBadgeTitle}>Clean power. Real peace of mind.</Text>
                           </View>
                         </View>
                       </View>

@@ -14,6 +14,18 @@
   box-sizing: border-box;
 }
 
+#root div,
+#root span {
+  font-family: "DM Sans", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: "DM Sans", sans-serif;
+}
+
 html,
 body,
 #root {
@@ -133,6 +145,10 @@ body {
 
 #hero-title,
 .brandName {
+  font-family: "Orbitron", sans-serif;
+}
+
+#hero-title span {
   font-family: "Orbitron", sans-serif;
 }
 
@@ -889,6 +905,20 @@ body {
 }
 
 @media (max-width: 760px) {
+  #about-eyebrow,
+  #about-description,
+  #about [id^="about-point-title-"],
+  #about [id^="about-point-description-"],
+  #about-badge-overline {
+    font-family: "DM Sans", sans-serif !important;
+  }
+
+  #about-title,
+  #about [id^="about-point-number-"],
+  #about-badge-title {
+    font-family: "Orbitron", sans-serif !important;
+  }
+
   #about {
     gap: 24px !important;
     padding-top: 30px !important;
