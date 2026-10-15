@@ -297,6 +297,16 @@ body {
   text-align: left;
 }
 
+#project-detail-hero-description {
+  display: block;
+  max-width: 680px;
+  margin-top: 14px;
+  color: #e1eaf3;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 #project-detail-body {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
@@ -318,6 +328,72 @@ body {
 
 #project-detail-gallery {
   padding: 38px 0 8px;
+}
+
+#project-detail-testimonial {
+  padding: 34px 0 8px;
+}
+
+#project-detail-testimonial-eyebrow {
+  display: block;
+  color: #34d399;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+#project-detail-testimonial-title {
+  display: block;
+  margin-top: 10px;
+  color: #f7f9fc;
+  font-family: "Orbitron", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+#project-detail-testimonial-card {
+  position: relative;
+  margin-top: 18px;
+  padding: 26px 30px;
+  border: 1px solid rgba(250, 204, 21, 0.38);
+  background: linear-gradient(145deg, rgba(15, 31, 52, 0.88), rgba(7, 20, 38, 0.84));
+}
+
+#project-detail-testimonial-quote-mark {
+  display: block;
+  color: #facc15;
+  font-family: "Orbitron", sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+#project-detail-testimonial-quote {
+  display: block;
+  max-width: 900px;
+  margin-top: 8px;
+  color: #d7e0eb;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+#project-detail-testimonial-attribution {
+  display: block;
+  margin-top: 18px;
+  color: #facc15;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#project-detail-testimonial-attribution-detail {
+  display: block;
+  margin-top: 4px;
+  color: #aab8c9;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
 }
 
 #project-detail-gallery-heading {
@@ -816,7 +892,7 @@ body {
   #about {
     gap: 24px !important;
     padding-top: 30px !important;
-    padding-bottom: 36px !important;
+    padding-bottom: 16px !important;
   }
 
   #about-team-visual {
@@ -827,7 +903,7 @@ body {
   }
 
   #services {
-    padding-top: 26px !important;
+    padding-top: 14px !important;
     padding-bottom: 38px !important;
   }
 
@@ -875,8 +951,14 @@ body {
   }
 
   #project-detail-hero {
-    min-height: 290px;
+    min-height: 330px;
     padding: 20px;
+  }
+
+  #project-detail-hero-description {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.6;
   }
 
   #project-detail-body {
@@ -887,6 +969,19 @@ body {
 
   #project-detail-gallery {
     padding-top: 26px;
+  }
+
+  #project-detail-testimonial {
+    padding-top: 24px;
+  }
+
+  #project-detail-testimonial-card {
+    padding: 20px;
+  }
+
+  #project-detail-testimonial-quote {
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   #project-detail-more {

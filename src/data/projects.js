@@ -5,6 +5,8 @@ export const PROJECTS = [
     category: "SOLAR INSTALLATION",
     title: "Hadejija Solar Project",
     description: "A gallery of installation photos from the Hadejija project.",
+    heroDescription:
+      "A 40kWp solar mini-grid project commissioned in December 2025 in Hadejiya, Jigawa State, Nigeria. This sustainable off-grid installation delivers reliable, continuous clean energy to empower local households, businesses, and essential community services while significantly reducing dependence on traditional fuel generators.",
     image: "/projects/Hadejija/IMG-20261014-WA0029.jpg",
     location: "Hadejija, Nigeria",
     overview:
@@ -36,6 +38,8 @@ export const PROJECTS = [
     category: "SOLAR INSTALLATION",
     title: "Lagos Solar Project",
     description: "A gallery of installation photos from the Lagos project.",
+    heroDescription:
+      "A 256kWp commercial solar installation completed between March and April 2024 in Lagos, Nigeria. This high-capacity solar setup provides a dependable, eco-friendly energy solution designed to significantly lower operational electricity expenses, ensure uninterrupted workflow during grid instability, and reduce reliance on expensive diesel generators.",
     image: "/projects/Lagos/IMG-20261006-WA0000.jpg",
     location: "Lagos, Nigeria",
     overview:
@@ -62,6 +66,8 @@ export const PROJECTS = [
     category: "SOLAR INSTALLATION",
     title: "Lokogoma Solar Project",
     description: "A gallery of installation photos from the Lokogoma project.",
+    heroDescription:
+      "A 12kWp residential solar setup completed on May 26th, utilizing a solar carport design to provide reliable clean energy while doubling as a covered parking structure.",
     image: "/projects/Lokogoma/IMG-20261006-WA0000.jpg",
     location: "Lokogoma, Nigeria",
     overview:
@@ -71,6 +77,11 @@ export const PROJECTS = [
       "Solar equipment and site details",
       "A real project delivered by JODU-TECH LTD",
     ],
+    testimonial: {
+      quote:
+        "Switching to solar was the best decision we’ve made for our home! Before working with the team, our monthly electricity bills were getting out of hand, and power outages were a constant frustration. From the initial consultation to the final installation, everything was seamless and professional. They helped us choose the right size system for our family's needs without pushing unnecessary upgrades. Now, our power is 100% reliable, and our energy bills have dropped dramatically. I only wish we had done this years ago!",
+      attribution: "Sarah and Davis",
+    },
     media: [
       "IMG-20261006-WA0000.jpg",
       "IMG-20261006-WA0001.jpg",
@@ -93,6 +104,8 @@ export const PROJECTS = [
     category: "SOLAR INSTALLATION",
     title: "Nanguru Solar Project",
     description: "A gallery of installation photos from the Nanguru project.",
+    heroDescription:
+      "A power distribution infrastructure project completed in February 2026 at Nanguru, Taraba State, Nigeria. This initiative expanded local grid connectivity and enhanced power supply reliability, ensuring stable electricity access for households, public facilities, and small businesses across the community.",
     image: "/projects/Nanguru/IMG-20261014-WA0007.jpg",
     location: "Nanguru, Nigeria",
     overview:
@@ -102,6 +115,12 @@ export const PROJECTS = [
       "Solar equipment and site details",
       "A real project delivered by JODU-TECH LTD",
     ],
+    testimonial: {
+      title: "Seamless installation and incredible results!",
+      quote:
+        "The crew was punctual, knowledgeable, and left everything spotless. Our solar system has been running flawlessly, and seeing our energy bill drop almost to zero feels amazing. Truly a top-tier company!",
+      attribution: "Elena R.",
+    },
     media: [
       "IMG-20261014-WA0007.jpg",
       "IMG-20261014-WA0010.jpg",
@@ -116,86 +135,6 @@ export const PROJECTS = [
       src: `/projects/Nanguru/${filename}`,
       alt: `Nanguru solar project, photo ${index + 1}`,
     })),
-  },
-  {
-    id: 1,
-    slug: "residential-solar",
-    category: "RESIDENTIAL SOLAR",
-    title: "Power for the place you call home",
-    description: "A rooftop solar and battery setup for dependable day-and-night energy.",
-    image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1100&q=85",
-    location: "Homes across Nigeria",
-    overview:
-      "A home energy system designed around household usage, combining rooftop solar generation with battery storage to provide more dependable power throughout the day and night.",
-    highlights: [
-      "Solar generation designed for residential rooftops",
-      "Battery storage for power after sunset",
-      "System sizing tailored to household energy needs",
-    ],
-  },
-  {
-    id: 2,
-    slug: "commercial-solar",
-    category: "COMMERCIAL SOLAR",
-    title: "Keep business moving",
-    description: "Scalable solar power built to support your team's daily operations.",
-    image: "https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=900&q=85",
-    location: "For growing businesses",
-    overview:
-      "A scalable solar energy solution that helps businesses meet their day-to-day power needs with a system planned around their premises and operating requirements.",
-    highlights: [
-      "Solar solutions for offices and commercial spaces",
-      "System capacity planned around business operations",
-      "A practical path to expanding energy capacity",
-    ],
-  },
-  {
-    id: 3,
-    slug: "backup-and-storage",
-    category: "BACKUP & STORAGE",
-    title: "Stay ready when the grid isn't",
-    description: "Battery storage that keeps essential devices and spaces powered.",
-    image: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=900&q=85",
-    location: "Reliable power, day and night",
-    overview:
-      "A backup and storage setup focused on keeping essential appliances and spaces powered when grid supply is unavailable.",
-    highlights: [
-      "Battery storage for essential loads",
-      "Backup power matched to your priorities",
-      "Integration planning for existing or new solar",
-    ],
-  },
-  {
-    id: 4,
-    slug: "off-grid-infrastructure",
-    category: "OFF-GRID INFRASTRUCTURE",
-    title: "Uninterrupted Independent Power",
-    description: "Complete off-grid solar installation for remote agricultural hubs.",
-    image: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=900&q=85",
-    location: "Rural Agribusiness",
-    overview:
-      "An independent power solution for remote agricultural operations, planned to support reliable energy access away from the utility grid.",
-    highlights: [
-      "Off-grid generation for remote locations",
-      "Energy planning for agricultural operations",
-      "Storage and system design in one installation",
-    ],
-  },
-  {
-    id: 5,
-    slug: "industrial-solar-grid",
-    category: "INDUSTRIAL SOLAR GRID",
-    title: "High-Output Renewable Energy",
-    description: "Large-scale solar array for continuous manufacturing facilities.",
-    image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1100&q=85",
-    location: "Industrial Zone, Ogun",
-    overview:
-      "A large-scale solar energy concept for industrial facilities, designed to support substantial and ongoing operational power requirements.",
-    highlights: [
-      "Large-scale solar array planning",
-      "Designed around continuous facility operations",
-      "Renewable generation for industrial power needs",
-    ],
   },
 ];
 

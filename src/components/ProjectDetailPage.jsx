@@ -70,6 +70,11 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
           <Text style={{ color: "#e1eaf3", fontSize: 13, marginTop: 10 }}>
             {project.location}
           </Text>
+          {project.heroDescription && (
+            <Text nativeID="project-detail-hero-description">
+              {project.heroDescription}
+            </Text>
+          )}
         </View>
       </View>
 
@@ -176,6 +181,31 @@ export default function ProjectDetailPage({ project, onBack, onSelectProject, on
           </View>
         )}
       </View>
+
+      {project.testimonial && (
+        <View nativeID="project-detail-testimonial">
+          <Text nativeID="project-detail-testimonial-eyebrow">CUSTOMER TESTIMONIAL</Text>
+          <Text nativeID="project-detail-testimonial-title">
+            {project.testimonial.title || "A customer’s experience"}
+          </Text>
+          <View nativeID="project-detail-testimonial-card">
+            <Text nativeID="project-detail-testimonial-quote-mark" accessibilityElementsHidden>
+              “
+            </Text>
+            <Text nativeID="project-detail-testimonial-quote" accessibilityRole="text">
+              {project.testimonial.quote}
+            </Text>
+            <Text nativeID="project-detail-testimonial-attribution">
+              {project.testimonial.attribution}
+            </Text>
+            {project.testimonial.attributionDetail && (
+              <Text nativeID="project-detail-testimonial-attribution-detail">
+                {project.testimonial.attributionDetail}
+              </Text>
+            )}
+          </View>
+        </View>
+      )}
 
       <View nativeID="project-detail-more">
         <Text style={{ color: "#f7f9fc", fontSize: 19, fontWeight: "700", marginBottom: 18 }}>
