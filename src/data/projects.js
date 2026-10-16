@@ -83,7 +83,7 @@ export const PROJECTS = [
       attribution: "Sarah and Davis",
     },
     media: [
-      "IMG-20261006-WA0000.jpg",
+      // "IMG-20261006-WA0000.jpg",
       "IMG-20261006-WA0001.jpg",
       "IMG-20261014-WA0038.jpg",
       "IMG-20261014-WA0040.jpg",

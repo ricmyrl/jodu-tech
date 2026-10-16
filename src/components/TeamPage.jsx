@@ -8,20 +8,28 @@ function collectTeam(person) {
 }
 
 const TEAM_PROFILES = [TEAM, ...collectTeam(TEAM)];
+const TEAM_FILTERS = [
+  { id: "all", label: "Everyone", people: TEAM_PROFILES },
+  { id: "leadership", label: "Leadership", people: [TEAM, ...TEAM.reports] },
+  ...TEAM.reports.map((leader) => ({
+    id: leader.id,
+    label: leader.role.replace(/ Director| Manager$/, ""),
+    people: [leader, ...collectTeam(leader)],
+  })),
+];
 
-function TeamPhoto({ person }) {
-  const [expanded, setExpanded] = useState(false);
-
+function TeamPhoto({ person, dimmed }) {
   return (
-    <Pressable
+    <View
       nativeID={`team-member-${person.id}`}
-      accessibilityRole="button"
+      accessibilityRole="group"
       accessibilityLabel={`${person.name}, ${person.role}. ${person.bio}`}
-      accessibilityState={{ pressed: expanded }}
-      onPress={() => setExpanded((current) => !current)}
+      dataSet={{ filterMatch: dimmed ? "false" : "true" }}
+      style={{ opacity: dimmed ? 0.24 : 1 }}
     >
       <Image
         nativeID={`team-photo-${person.id}`}
+        dataSet={{ photo: person.id }}
         source={{ uri: person.image }}
         accessibilityLabel={`Illustrative demo portrait of ${person.name}`}
         resizeMode="cover"
@@ -38,11 +46,15 @@ function TeamPhoto({ person }) {
           {person.bio}
         </Text>
       </View>
-    </Pressable>
+    </View>
   );
 }
 
 export default function TeamPage({ onBack, onContact }) {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const selectedFilter = TEAM_FILTERS.find((filter) => filter.id === activeFilter);
+  const matchingIds = new Set(selectedFilter.people.map((person) => person.id));
+
   return (
     <View nativeID="team-page">
       <Pressable
@@ -71,10 +83,66 @@ export default function TeamPage({ onBack, onContact }) {
         <Text nativeID="team-collage-caption">A CREW OF 20 · ONE BRIGHTER FUTURE</Text>
       </View>
 
-      <View nativeID="team-photo-collage">
+      <View nativeID="team-filter-section">
+        <Text nativeID="team-filter-eyebrow">FILTER BY DEPARTMENT</Text>
+        <View nativeID="team-filter-list" accessibilityRole="toolbar" accessibilityLabel="Filter team by department">
+          {TEAM_FILTERS.map((filter) => (
+            <Pressable
+              key={filter.id}
+              nativeID={`team-filter-${filter.id}`}
+              accessibilityRole="button"
+              accessibilityState={{ pressed: activeFilter === filter.id }}
+              aria-pressed={activeFilter === filter.id}
+              onPress={() => setActiveFilter(filter.id)}
+            >
+              <Text nativeID={`team-filter-label-${filter.id}`}>
+                {filter.label}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+        <Text nativeID="team-interaction-hint">
+          Hover over or select a portrait to reveal each person’s role and story.
+        </Text>
+      </View>
+
+      <View nativeID="team-photo-collage" dataSet={{ activeFilter }}>
         {TEAM_PROFILES.map((person) => (
-          <TeamPhoto key={person.id} person={person} />
+          <TeamPhoto
+            key={person.id}
+            person={person}
+            dimmed={!matchingIds.has(person.id)}
+          />
         ))}
+      </View>
+
+      <View nativeID="team-how-we-work">
+        <Image
+          nativeID="team-how-we-work-image"
+          source={{ uri: "/teamImage.jpg" }}
+          accessibilityLabel="JODU-TECH team members working together at a solar project site"
+          resizeMode="cover"
+          style={{ width: "100%", height: "100%" }}
+        />
+        <View nativeID="team-how-we-work-copy">
+          <Text nativeID="team-how-we-work-eyebrow">GOOD WORK, DONE TOGETHER</Text>
+          <Text nativeID="team-how-we-work-title">From first plan to lasting power.</Text>
+          <Text nativeID="team-how-we-work-description">
+            We bring customer needs, careful system design, safe installation, and ongoing support together to deliver dependable solar energy.
+          </Text>
+          <View nativeID="team-how-we-work-steps">
+            {[
+              ["01", "Listen & plan"],
+              ["02", "Design & install"],
+              ["03", "Support & improve"],
+            ].map(([number, title]) => (
+              <View key={number} nativeID={`team-work-step-${number}`}>
+                <Text nativeID={`team-work-step-number-${number}`}>{number}</Text>
+                <Text nativeID={`team-work-step-title-${number}`}>{title}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
       </View>
 
       <View nativeID="team-footnote">
